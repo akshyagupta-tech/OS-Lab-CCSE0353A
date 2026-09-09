@@ -1,0 +1,105 @@
+=== PROGRAM 3: IMPLEMENTATION OF LINUX COMMANDS (CONTINUED) ===
+
+--- Part (v): Redirection and Piping ---
+$ cat fruits.txt | sort | uniq
+apple
+banana
+cherry
+$ cat fruits.txt | grep apple
+apple
+apple
+$ cat fruits.txt | wc -l
+4
+
+--- Part (vi): File Compression and Archiving ---
+$ tar -cvf archive.tar fruits.txt
+fruits.txt
+$ gzip -k fruits.txt
+-rw-r--r-- 1 root root 10K Sep  9 17:39 archive.tar
+-rw-r--r-- 1 root root  26 Sep  9 17:35 fruits.txt
+-rw-r--r-- 1 root root  50 Sep  9 17:35 fruits.txt.gz
+$ zip fruits.zip fruits.txt
+  adding: fruits.txt (deflated 19%)
+
+--- Part (vii): Process Commands ---
+$ ps -ef | head -n 5
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           1       0  0 17:18 ?        00:00:01 /sbin/init
+root           2       0  0 17:18 ?        00:00:00 [kthreadd]
+root           3       2  0 17:18 ?        00:00:00 [pool_workqueue_release]
+root           4       2  0 17:18 ?        00:00:00 [kworker/R-rcu_g]
+$ sleep 300 & (PID: 2189)
+$ pgrep sleep
+2189
+2204
+$ kill 2189
+$ top -b -n 1 | head -n 10
+top - 17:49:53 up 31 min,  0 user,  load average: 0.00, 0.00, 0.00
+Tasks: 128 total,   1 running, 127 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.0 us,  9.1 sy,  0.0 ni, 90.9 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st 
+MiB Mem :   1903.2 total,    701.5 free,    472.8 used,    905.5 buff/cache     
+MiB Swap:   1024.0 total,   1024.0 free,      0.0 used.   1430.5 avail Mem 
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+      1 root      20   0   22100  13260   9488 S   0.0   0.7   0:01.43 systemd
+      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
+      3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+
+
+--- Part (viii): Network Commands ---
+$ ip route
+default via 172.30.1.1 dev enp1s0 proto dhcp src 172.30.1.2 metric 1002 mtu 1450 
+172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown 
+172.30.1.0/24 dev enp1s0 proto dhcp scope link src 172.30.1.2 metric 1002 mtu 1450 
+$ ifconfig | head -n 12
+docker0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1454
+        inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
+        ether 62:9d:e0:01:a6:04  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+enp1s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1450
+        inet 172.30.1.2  netmask 255.255.255.0  broadcast 172.30.1.255
+        inet6 fe80::55a:1d6e:e4d7:28b2  prefixlen 64  scopeid 0x20<link>
+        ether 4e:6e:1a:88:76:dd  txqueuelen 1000  (Ethernet)
+$ ping -c 3 8.8.8.8
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=111 time=11.1 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=111 time=1.71 ms
+64 bytes from 8.8.8.8: icmp_seq=3 ttl=111 time=1.77 ms
+
+--- 8.8.8.8 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2003ms
+rtt min/avg/max/mdev = 1.710/4.857/11.096/4.411 ms
+$ netstat -tuln | head -n 6
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State      
+tcp        0      0 0.0.0.0:40200           0.0.0.0:*               LISTEN     
+tcp        0      0 0.0.0.0:40205           0.0.0.0:*               LISTEN     
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN     
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN     
+$ host google.com
+google.com has address 173.194.41.138
+google.com has address 173.194.41.139
+google.com has address 173.194.41.102
+google.com has address 173.194.41.100
+google.com has address 173.194.41.113
+google.com has address 173.194.41.101
+google.com has IPv6 address 2404:6800:4001:c01::8b
+google.com has IPv6 address 2404:6800:4001:c01::66
+google.com has IPv6 address 2404:6800:4001:c01::64
+google.com has IPv6 address 2404:6800:4001:c01::71
+google.com mail is handled by 10 smtp.google.com.
+
+--- Part (ix): Administrator Commands ---
+$ groupadd studentgrp
+studentgrp:x:1001:
+$ useradd -m -s /bin/bash labuser
+labuser:x:1001:1002::/home/labuser:/bin/bash
+$ echo 'labuser:Password@123' | chpasswd
+$ usermod -aG studentgrp labuser
+uid=1001(labuser) gid=1002(labuser) groups=1002(labuser),1001(studentgrp)
+$ deluser labuser && groupdel studentgrp
+info: Removing crontab ...
+info: Removing user `labuser' ...
