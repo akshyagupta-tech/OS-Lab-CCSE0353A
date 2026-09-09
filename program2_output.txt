@@ -1,0 +1,43 @@
+=== PROGRAM 2: IMPLEMENTATION OF LINUX COMMANDS ===
+
+--- Part (i): System Information Commands ---
+$ uname -a
+Linux ubuntu 6.8.0-138-generic #138-Ubuntu SMP PREEMPT_DYNAMIC Fri Jul 31 22:41:49 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+$ hostname
+ubuntu
+$ date
+Wed Sep  9 16:48:23 UTC 2026
+$ uptime
+ 16:48:42 up 34 min,  0 user,  load average: 0.01, 0.00, 0.00
+
+--- Part (ii): File Operations & Permissions ---
+$ cat testfile.txt
+Linux Operating System File Handling Lab
+$ ls -l testfile.txt file_renamed.txt
+-rw-r--r-- 1 root root 41 Sep  9 16:59 file_renamed.txt
+-rwxr-xr-x 1 root root 41 Sep  9 16:59 testfile.txt
+$ umask
+0022
+
+--- Part (iii): Directory Operations & Navigation ---
+$ pwd
+/root/OS-Lab-CCSE0353A
+$ ls -ld os_lab_dir os_lab_dir/nested_dir
+drwxr-xr-x 3 root root 4096 Sep  9 17:04 os_lab_dir
+drwxr-xr-x 2 root root 4096 Sep  9 17:04 os_lab_dir/nested_dir
+$ pwd (inside nested)
+/root/OS-Lab-CCSE0353A/os_lab_dir/nested_dir
+
+--- Part (iv): Disk Management Commands ---
+$ df -h /
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vda1        19G  5.4G   13G  30% /
+$ du -sh .
+208K	.
+$ lsblk
+NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+vda     253:0    0   20G  0 disk 
+|-vda1  253:1    0   19G  0 part /
+|-vda14 253:14   0    4M  0 part 
+|-vda15 253:15   0  106M  0 part /boot/efi
+`-vda16 259:0    0  913M  0 part /boot
