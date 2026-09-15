@@ -1,0 +1,40 @@
+=== PROGRAM 4: SHELL SCRIPTING PROGRAMMING ===
+
+--- Part (i): User Details Script ---
+Enter your Name: Akshya Gupta
+Enter your Program Name: B.Tech CSE
+Enter your Enrollment Number: 2301330100050
+Student Details:
+Name: Akshya Gupta
+Program: B.Tech CSE
+Enrollment No: 2301330100050
+
+--- Part (ii): Sum, Average, and Product ---
+Input Numbers: 10, 20, 30, 40
+Sum = 100
+Average = 25.00
+Product = 240000
+
+--- Part (iii): Average of Command Line Numbers ---
+Arguments Passed: 15 25 35 45 55
+Total Arguments Count: 5
+Sum: 175
+Average: 35.00
+
+--- Part (iv): Exchange Values of Two Variables ---
+Before Swapping: a = 45, b = 90
+After Swapping: a = 90, b = 45
+
+--- Part (v): Print Numbers 1 to 10 using while & until loop ---
+
+--- Part (v): Print Numbers 1 to 10 using while & until loop ---
+Output using while loop:
+1 2 3 4 5 6 7 8 9 10 
+Output using until loop:
+1 2 3 4 5 6 7 8 9 10 
+
+--- Part (vi): Print Numbers 1 to 10 using for loop ---
+Output using range expansion {1..10}:
+1 2 3 4 5 6 7 8 9 10 
+Output using C-style for loop:
+1 2 3 4 5 6 7 8 9 10 
