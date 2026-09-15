@@ -1,0 +1,30 @@
+=== PROGRAM 5: SHELL SCRIPTING PROGRAMMING (CONTINUED) ===
+
+--- Part (vii): Odd Position Digits in a 5-Digit Number ---
+Input Number: 94827
+1st Position (Index 1): 9
+3rd Position (Index 3): 8
+5th Position (Index 5): 7
+Resultant Odd Position Digits: 9 8 7
+
+--- Part (viii): Binary Search ---
+Sorted Array: 12 24 35 47 59 63 78 88 95
+Search Key: 59
+Status: Element 59 found at index 4 (Position: 5)
+
+--- Part (ix): String Concatenation and Length ---
+First String: Operating
+Second String: System
+Concatenated String: OperatingSystem
+Length of Resultant String: 15
+
+--- Part (x): Smallest of Three Numbers ---
+Given numbers: 45, 12, 78
+Smallest number is: 12
+
+--- Part (xi): Text Analyzer ---
+Input Text: "Hello World! Welcome to OS Lab #2026."
+Words: 7
+Characters: 37
+White Spaces: 6
+Special Symbols: 3
